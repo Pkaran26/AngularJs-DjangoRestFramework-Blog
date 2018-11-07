@@ -8,6 +8,11 @@ app.config(function ($stateProvider, $urlRouterProvider){
         url: "/read/:id",
         templateUrl: "templates/read.html",
         controller: "read"
+    })
+    .state("search", {
+        url: "/search/:id",
+        templateUrl: "templates/search.html",
+        controller: "search"
     });
     $urlRouterProvider.otherwise("/home");
 });
