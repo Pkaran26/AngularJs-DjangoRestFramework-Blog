@@ -26,6 +26,23 @@ class BlogDetail(generics.RetrieveAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
 
+class SearchByCategory(generics.ListAPIView):
+    queryset = BlogPost.objects.all()
+    serializer_class = BlogPostSerializer
+    pagination_class = ApiPagination
+
+    def get_queryset(self):
+        return BlogPost.objects.filter(category=self.kwargs.get('id'))
+
+class SearchByAll(generics.ListAPIView):
+    queryset = BlogPost.objects.all()
+    serializer_class = BlogPostSerializer
+    pagination_class = ApiPagination
+
+    def get_queryset(self):
+        return BlogPost.objects.filter(title__contains=self.kwargs.get('search'))
+        # | is used for OR
+
 #Category
 class CreateCategory(generics.CreateAPIView):
     queryset = Category.objects.all()

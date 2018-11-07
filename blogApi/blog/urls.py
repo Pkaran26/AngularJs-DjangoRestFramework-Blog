@@ -7,6 +7,8 @@ urlpatterns = [
     path('post/<int:pk>/', views.BlogDetail.as_view()),
     path('post/createpost', views.CreatePost.as_view()),
     path('post/managepost/<int:pk>/', views.ManagePost.as_view()),
+    path('post/search/<int:id>/', views.SearchByCategory.as_view()),
+    path('post/search/<str:search>/', views.SearchByAll.as_view()),
 
     path('category/', views.CategoryList.as_view()),
     path('category/<int:pk>', views.GetCategory.as_view()),
