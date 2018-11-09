@@ -31,11 +31,11 @@ app.controller('home', function($scope, $http, $state, $stateParams){
     }
 
     $scope.categoryList();
-    console.log($stateParams.id);
-    if ($stateParams.id){
+    //console.log($stateParams.id);
+    if ($stateParams.id && $stateParams.type){
         $scope.id = $stateParams.id;
-        
-        $scope.getPost('http://localhost:8000/blog/v1/post/search/'+$scope.id+"/");
+        $scope.type = $stateParams.type;
+        $scope.getPost('http://localhost:8000/blog/v1/post/search/'+$scope.id+"/"+$scope.type+"/");
     }else{
         $scope.getPost('http://localhost:8000/blog/v1/post/');
     }

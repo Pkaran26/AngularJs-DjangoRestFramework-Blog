@@ -13,7 +13,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
         controller: "read"
     })
     .state("search", {
-        url: "/search/:id",
+        url: "/search/:id/:type",
         templateUrl: "templates/search.html",
         controller: "search"
     });

@@ -7,9 +7,9 @@
                 <hr/>
                 <p class="card-text">{{x.body}}</p>
                 <hr/>
-                <p class="card-text">Category: <a ui-sref="search({cate:{{x.category}}})">{{x.category}}</a></p>
-                <p class="card-text">Publish: <a ui-sref="search({pubdate:{{x.created_at}}})">{{x.created_at | date}}</a></p>
-                <p class="card-text">Writer: <a ui-sref="search({user:{{x.user}}})">{{x.user | uppercase }}</a></p>
+                <p class="card-text">Category: <a ui-sref="search({id:{{x.category_id}}, type:1})">{{x.category}}</a></p>
+                <p class="card-text">Publish: <a href="#">{{x.created_at | date}}</a></p>
+                <p class="card-text">Writer: <a ui-sref="search({id:{{x.user_id}}, type:2})">{{x.user | uppercase }}</a></p>
                 
                 <button ng-click="readPost(x.id)" class="btn btn-primary btn-sm">Read more</button>
             </div>
@@ -24,7 +24,7 @@
             <div class="card-body">
                 <h4 class="card-title">Category</h4>
                 <hr/>
-                <a ng-repeat='x in category' ui-sref="search({id:{{x.id}}})" 
+                <a ng-repeat='x in category' ui-sref="search({id:{{x.id}}, type:1})" 
                 style="margin-right:3px;margin-bottom:3px;" class="btn btn-primary btn-sm">{{x.category}}</a>
             </div>
         </div>
