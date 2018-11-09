@@ -1,6 +1,9 @@
 app.config(function ($stateProvider, $urlRouterProvider){
     $stateProvider.state("home", {
         url: "/home",
+        params: {
+            id: null,
+          },
         templateUrl: "templates/home.html",
         controller: "home"
     })

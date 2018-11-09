@@ -7,9 +7,9 @@
                     <hr/>
                     <p class="card-text">{{x.body}}</p>
                     <hr/>
-                    <p class="card-text">Category: <a href="#">{{x.category | getCategory}}</a></p>
+                    <p class="card-text">Category: <a href="#">{{x.category}}</a></p>
                     <p class="card-text">Publish: <a href="#">{{x.created_at | date}}</a></p>
-                    <p class="card-text">Writer: <a href="#">{{x.user | getUser}}</a></p>
+                    <p class="card-text">Writer: <a href="#">{{x.user | uppercase }}</a></p>
                     
                     <button ng-click="readPost(x.id)" class="btn btn-primary btn-sm">Read more</button>
                 </div>
@@ -24,7 +24,8 @@
                 <div class="card-body">
                     <h4 class="card-title">Category</h4>
                     <hr/>
-                    <button ng-repeat='x in category' style="margin-right:3px;margin-bottom:3px;" class="btn btn-primary">{{x.category}}</button>
+                    <a ng-repeat='x in category' ui-sref="search({id:{{x.id}}})" 
+                style="margin-right:3px;margin-bottom:3px;" class="btn btn-primary btn-sm">{{x.category}}</a>
                 </div>
             </div>
             <div class="card border-primary">

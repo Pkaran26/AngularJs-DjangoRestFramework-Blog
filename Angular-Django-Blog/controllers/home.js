@@ -1,4 +1,4 @@
-app.controller('home', function($scope, $http, $state){
+app.controller('home', function($scope, $http, $state, $stateParams){
     $scope.getPost = function(url){
         $http.get(url).then(function(res){
             $scope.post = res.data.results
@@ -16,11 +16,9 @@ app.controller('home', function($scope, $http, $state){
         $http.get('http://localhost:8000/blog/v1/category/').then(function(res){
             $scope.category = res.data
             cate = angular.fromJson(res.data);
-            cate_count = res.data.length;
         });
         $http.get('http://localhost:8000/blog/v1/post/user/').then(function(res){
             user = angular.fromJson(res.data);
-            user_count = res.data.length;
         });
     }
     
@@ -33,6 +31,12 @@ app.controller('home', function($scope, $http, $state){
     }
 
     $scope.categoryList();
-    $scope.getPost('http://localhost:8000/blog/v1/post/');
-    
+    console.log($stateParams.id);
+    if ($stateParams.id){
+        $scope.id = $stateParams.id;
+        
+        $scope.getPost('http://localhost:8000/blog/v1/post/search/'+$scope.id+"/");
+    }else{
+        $scope.getPost('http://localhost:8000/blog/v1/post/');
+    }
 });
