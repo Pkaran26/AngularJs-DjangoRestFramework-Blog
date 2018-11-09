@@ -9,6 +9,8 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['pk', 'username']
 
 class BlogPostSerializer(serializers.ModelSerializer):
+    category = serializers.StringRelatedField()
+    user = serializers.StringRelatedField()
     class Meta:
         model = BlogPost
         fields = '__all__'
