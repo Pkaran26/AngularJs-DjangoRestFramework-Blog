@@ -32,7 +32,10 @@ class SearchByCategory(generics.ListAPIView):
     pagination_class = ApiPagination
 
     def get_queryset(self):
-        return BlogPost.objects.filter(category=self.kwargs.get('id'))
+        if self.kwargs.get('type') == 1:
+            return BlogPost.objects.filter(category=self.kwargs.get('id'))
+        if self.kwargs.get('type') == 2:
+            return BlogPost.objects.filter(user=self.kwargs.get('id'))
 
 class SearchByAll(generics.ListAPIView):
     queryset = BlogPost.objects.all()

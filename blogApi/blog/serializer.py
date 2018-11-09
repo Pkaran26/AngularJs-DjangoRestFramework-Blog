@@ -9,8 +9,14 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['pk', 'username']
 
 class BlogPostSerializer(serializers.ModelSerializer):
+    category = serializers.PrimaryKeyRelatedField(read_only=True)
+    category_id = category
     category = serializers.StringRelatedField()
+
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    user_id = user
     user = serializers.StringRelatedField()
+    
     class Meta:
         model = BlogPost
         fields = '__all__'
@@ -26,6 +32,9 @@ class CategorySerializer(serializers.ModelSerializer):
      #   return self.queryset.filter(blogpost=self.kwargs.get('pk'))
 
 class CommentSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    user_id = user
+    user = serializers.StringRelatedField()
     class Meta:
         model = Comments
         fields = '__all__'
